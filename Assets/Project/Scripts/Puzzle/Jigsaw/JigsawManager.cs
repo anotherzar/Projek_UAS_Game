@@ -27,9 +27,6 @@ public class JigsawManager : MonoBehaviour
         // Mencari semua kepingan JigsawPiece yang ada di scene secara dinamis
         pieces = FindObjectsByType<JigsawPiece>(FindObjectsSortMode.None);
 
-        // OTOMATIS: Sejajarkan semua snap point ke posisi kepingan puzzle yang sudah kamu susun rapi di editor!
-        AlignSnapPointsWithPieces();
-
         if (scrambleAtStart)
         {
             ScramblePieces();
@@ -39,20 +36,6 @@ public class JigsawManager : MonoBehaviour
         if (winUIPanel != null)
         {
             winUIPanel.SetActive(false);
-        }
-    }
-
-    private void AlignSnapPointsWithPieces()
-    {
-        if (pieces == null || pieces.Length == 0) return;
-
-        foreach (JigsawPiece piece in pieces)
-        {
-            if (piece != null && piece.targetPoint != null)
-            {
-                // Pindahkan snap point persis ke koordinat kepingan puzzle yang sudah rapi
-                piece.targetPoint.position = piece.transform.position;
-            }
         }
     }
 
@@ -112,7 +95,7 @@ public class JigsawManager : MonoBehaviour
 
         // Jika semua kepingan sudah di posisi masing-masing
         puzzleCompleted = true;
-        Debug.Log("🎉 Puzzle Complete! 🎉");
+        Debug.Log("LOG_WIN");
 
         // Aktifkan Win UI Panel jika ada
         if (winUIPanel != null)

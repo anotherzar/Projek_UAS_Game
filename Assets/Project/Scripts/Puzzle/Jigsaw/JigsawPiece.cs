@@ -6,7 +6,7 @@ public class JigsawPiece : MonoBehaviour
     public Transform targetPoint;
 
     [Header("Settings")]
-    public float snapDistance = 0.5f;
+    public float snapDistance = 1.5f;
 
     [Header("State")]
     public bool isPlaced = false;
